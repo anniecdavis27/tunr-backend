@@ -1744,3 +1744,44 @@ Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 1.2ms | Allocations: 1881)
 Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 2.7ms | Allocations: 2848)
 
 
+Started GET "/" for ::1 at 2020-08-07 11:54:58 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 173)
+
+
+Started GET "/songs" for ::1 at 2020-08-07 11:55:02 -0400
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (1.0ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 8.3ms | ActiveRecord: 7.0ms | Allocations: 6006)
+
+
+Started GET "//songs" for ::1 at 2020-08-07 12:11:52 -0400
+Started GET "//faves" for ::1 at 2020-08-07 12:11:52 -0400
+Processing by SongsController#index as HTML
+  [1m[36mSong Load (1.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 1.2ms | Allocations: 1920)
+
+
+Processing by FavesController#faves as HTML
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."favorite" = $1[0m  [["favorite", true]]
+  ↳ app/controllers/faves_controller.rb:5:in `faves'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.8ms | Allocations: 1607)
+
+
+Started GET "//songs" for ::1 at 2020-08-07 12:12:21 -0400
+Started GET "//faves" for ::1 at 2020-08-07 12:12:21 -0400
+Processing by SongsController#index as HTML
+Processing by FavesController#faves as HTML
+  [1m[36mSong Load (3.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 2.9ms | ActiveRecord: 3.5ms | Allocations: 1887)
+
+
+  [1m[36mSong Load (0.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."favorite" = $1[0m  [["favorite", true]]
+  ↳ app/controllers/faves_controller.rb:5:in `faves'
+Completed 200 OK in 26ms (Views: 22.9ms | ActiveRecord: 2.2ms | Allocations: 2830)
+
+
