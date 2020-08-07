@@ -1700,3 +1700,47 @@ Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.7ms | Allocations: 1656)
 Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 1.2ms | Allocations: 2611)
 
 
+Started GET "//faves" for ::1 at 2020-08-07 11:28:34 -0400
+Started GET "//songs" for ::1 at 2020-08-07 11:28:34 -0400
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SongsController#index as HTML
+Processing by FavesController#faves as HTML
+  [1m[36mSong Load (0.7ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."favorite" = $1[0m  [["favorite", true]]
+  ↳ app/controllers/faves_controller.rb:5:in `faves'
+Completed 200 OK in 26ms (Views: 14.3ms | ActiveRecord: 8.7ms | Allocations: 7382)
+
+
+Completed 200 OK in 26ms (Views: 2.6ms | ActiveRecord: 19.7ms | Allocations: 7513)
+
+
+Started PUT "//songs/6" for ::1 at 2020-08-07 11:28:36 -0400
+Processing by SongsController#update as HTML
+  Parameters: {"favorite"=>true, "id"=>"6", "song"=>{"favorite"=>true}}
+  [1m[36mSong Load (0.4ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/songs_controller.rb:44:in `set_song'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/songs_controller.rb:29:in `update'
+  [1m[36mSong Update (1.3ms)[0m  [1m[33mUPDATE "songs" SET "favorite" = $1, "updated_at" = $2 WHERE "songs"."id" = $3[0m  [["favorite", true], ["updated_at", "2020-08-07 15:28:36.014741"], ["id", 6]]
+  ↳ app/controllers/songs_controller.rb:29:in `update'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/songs_controller.rb:29:in `update'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 3.6ms | Allocations: 3370)
+
+
+Started GET "//songs" for ::1 at 2020-08-07 11:28:36 -0400
+Started GET "//faves" for ::1 at 2020-08-07 11:28:36 -0400
+Processing by SongsController#index as HTML
+Processing by FavesController#faves as HTML
+  [1m[36mSong Load (1.2ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  ↳ app/controllers/songs_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 1.2ms | Allocations: 1881)
+
+
+  [1m[36mSong Load (0.3ms)[0m  [1m[34mSELECT "songs".* FROM "songs" WHERE "songs"."favorite" = $1[0m  [["favorite", true]]
+  ↳ app/controllers/faves_controller.rb:5:in `faves'
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 2.7ms | Allocations: 2848)
+
+
